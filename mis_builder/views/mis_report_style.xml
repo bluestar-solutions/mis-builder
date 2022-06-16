@@ -77,6 +77,11 @@
                             name="indent_level"
                             attrs="{'invisible': [('indent_level_inherit', '=', True)]}"
                         />
+                        <field name="page_break_inherit" />
+                        <field
+                            name="page_break"
+                            attrs="{'invisible': [('page_break_inherit', '=', True)]}"
+                        />
                     </group>
                     <group string="Visibility" col="4">
                         <field name="hide_empty_inherit" />

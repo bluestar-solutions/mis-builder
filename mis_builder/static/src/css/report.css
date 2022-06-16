@@ -6,6 +6,7 @@
 .mis_row {
     display: table-row;
     page-break-inside: avoid;
+    page-break-before: always;
 }
 .mis_cell {
     display: table-cell;

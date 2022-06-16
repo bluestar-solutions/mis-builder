@@ -511,6 +511,7 @@ class KpiMatrix(object):
                 "label": row.label,
                 "description": row.description,
                 "style": self._style_model.to_css_style(row.style_props),
+                "tr_style": self._style_model.to_tr_css_style(row.style_props),
                 "cells": [],
             }
             for cell in row.iter_cells():

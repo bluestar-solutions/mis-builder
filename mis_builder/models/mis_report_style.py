@@ -30,6 +30,7 @@ PROPS = [
     "font_weight",
     "font_size",
     "indent_level",
+    "page_break",
     "prefix",
     "suffix",
     "dp",
@@ -110,6 +111,8 @@ class MisReportKpiStyle(models.Model):
     # indent
     indent_level_inherit = fields.Boolean(default=True)
     indent_level = fields.Integer()
+    page_break_inherit = fields.Boolean(default=False)
+    page_break = fields.Boolean(default=False)
     # number format
     prefix_inherit = fields.Boolean(default=True)
     prefix = fields.Char()
@@ -306,6 +309,16 @@ class MisReportKpiStyle(models.Model):
         ]
         if props.indent_level is not None and not no_indent:
             css_attributes.append(("text-indent", "{}em".format(props.indent_level)))
+        return (
+            "; ".join(["%s: %s" % a for a in css_attributes if a[1] is not None])
+            or None
+        )
+
+    @api.model
+    def to_tr_css_style(self, props):
+        css_attributes = []
+        if props.page_break:
+            css_attributes.append(("page-break-before", "always"))
         return (
             "; ".join(["%s: %s" % a for a in css_attributes if a[1] is not None])
             or None

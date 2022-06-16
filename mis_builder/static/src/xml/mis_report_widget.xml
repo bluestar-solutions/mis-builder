@@ -59,34 +59,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr t-foreach="widget.mis_report_data.body" t-as="row">
-                            <td t-att="{'style': row.style}">
-                                <t t-esc="row.label" />
-                                <t t-if="row.description">
-                                    <br />
-                                    <t t-esc="row.description" />
-                                </t>
-                            </td>
-                            <td
-                                t-foreach="row.cells"
-                                t-as="cell"
-                                t-att="{'style': cell.style, 'title': cell.val_c}"
-                                class="mis_builder_amount"
-                            >
-                                <t t-if="cell.drilldown_arg">
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="mis_builder_drilldown"
-                                        t-att-data-drilldown="JSON.stringify(cell.drilldown_arg)"
-                                    >
+                        <t t-foreach="widget.mis_report_data.body" t-as="row">
+                            <tr t-att="{'style': row.tr_style}">
+                                <td t-att="{'style': row.style}">
+                                    COUCOU
+                                    <t t-esc="row.label" />
+                                    <t t-if="row.description">
+                                        <br />
+                                        <t t-esc="row.description" />
+                                    </t>
+                                </td>
+                                <td
+                                    t-foreach="row.cells"
+                                    t-as="cell"
+                                    t-att="{'style': cell.style, 'title': cell.val_c}"
+                                    class="mis_builder_amount"
+                                >
+                                    <t t-if="cell.drilldown_arg">
+                                        <a
+                                            href="javascript:void(0)"
+                                            class="mis_builder_drilldown"
+                                            t-att-data-drilldown="JSON.stringify(cell.drilldown_arg)"
+                                        >
+                                            <t t-esc="cell.val_r" />
+                                        </a>
+                                    </t>
+                                    <t t-if="!cell.drilldown_arg">
                                         <t t-esc="cell.val_r" />
-                                    </a>
-                                </t>
-                                <t t-if="!cell.drilldown_arg">
-                                    <t t-esc="cell.val_r" />
-                                </t>
-                            </td>
-                        </tr>
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
                     </tbody>
                     <tfoot>
                         <tr />
